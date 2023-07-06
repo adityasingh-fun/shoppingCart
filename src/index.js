@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const bodyParser = require('body-parser');
+const dotenv = require('dotenv').config();
+const {MONGOOSE_STRING} = process.env;
 
 const route = require('./routes/route.js');
 
@@ -13,7 +14,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(multer().any());
 
-mongoose.connect('mongodb+srv://chaudharyaditya41:Z67gI1uJnrGCnHuY@cluster0.jgngtnq.mongodb.net/Group10Database?retryWrites=true&w=majority', {
+mongoose.connect(MONGOOSE_STRING, {
     useNewUrlParser: true
 })
 .then( () => console.log("MongoDb is connected"))
